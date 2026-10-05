@@ -207,9 +207,7 @@ pub fn from_ledger(lines: impl Iterator<Item = String>) -> WinterCount {
             .or_else(|| v["timestamp"].as_u64())
             .or_else(|| v["data"]["ts"].as_u64())
             .unwrap_or(i as u64);
-        let label = v["type"]
-            .as_str()
-            .or_else(|| v["data"]["type"].as_str());
+        let label = v["type"].as_str().or_else(|| v["data"]["type"].as_str());
         match label {
             Some(l) => wc.mark_labeled(ts, hash, l),
             None => wc.mark(ts, hash),

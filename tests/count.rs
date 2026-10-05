@@ -20,7 +20,11 @@ fn policy_at_answers_time_t() {
 
     assert_eq!(wc.policy_at(99), None, "robe starts at 100");
     assert_eq!(wc.policy_at(100), Some(old.as_str()));
-    assert_eq!(wc.policy_at(175), Some(old.as_str()), "still old policy at 175");
+    assert_eq!(
+        wc.policy_at(175),
+        Some(old.as_str()),
+        "still old policy at 175"
+    );
     assert_eq!(wc.policy_at(200), Some(new.as_str()));
     assert_eq!(wc.policy_at(10_000), Some(new.as_str()));
 }
